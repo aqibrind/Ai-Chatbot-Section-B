@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' type='text/css' media='screen' href='app.css'>
+	<script src='project.js'></script>
+</head>
+<body>
+	<div id="div1">
+	<h1>I wanna go OutSide. Tell what should should I do..!</h1><br>
+	<h2>Tell me the Temprature out there</h2>
+	<input type="number"  id="temp" placeholder="Temprature">
+	<button onclick="Temp()">Check</button> 
+</div>
+
+<div id="grad">
+	<h1>Grade Calculator</h1>
+	<h2>Enter Your Percentage</h2>
+
+	
+	<input placeholder="Percentage" id="prct">
+	<br><br>
+	<button onclick="grade()">Check</button>
+	
+	<h2>Grade: </h2><h3 id="grd"></h3>	
+</div>
+	 <div class="col-md-3"></div>
+	<div class="col-md-6 well">
+		<h3 class="text-primary">Currency Converter</h3>
+				<select onchange="Currency(); Calculate()" class="form-control" id="converter" style="width:30%;">
+					<option value="Dollar">Dollar</option>
+					<option value="PKR">PKR</option>
+				</select>
+				<br />
+				<input type="number" oninput="Calculate()" class="form-control" id="value1"/>
+			</div>
+			<br /><br />
+			<div class="form-group">
+				<input type="number" class="form-control" id="value2" disabled="disabled"/>
+				<label id="currency"></label>
+			</div>
+		</div>
+	</div>
+
+	<script>function Temp()
+		{
+			let temprature = document.getElementById("temp").value 
+			if(temprature > 25){
+				alert("Yes, You can surely..!");
+			}
+			else if(temprature<= 25 &&temprature>15)
+			{
+				alert("Grab a jacket. It could be cold out there");
+			}
+			else if(temprature<15 && temprature>0)
+			{
+				alert("Don't go without coat. It's cold out there");
+			}
+			else if(temprature<=0){
+				alert("Don't Go, It's too cold out there");
+			}
+		}
+		
+		function grade(){
+				let prc = document.getElementById("prct").value
+		
+			if(prc >= 80)
+			{
+				 document.getElementById("grd").innerText = "A+"
+				alert("Grade: A")
+			}
+			else if(prc >= 70 && prc <80){
+				 document.getElementById("grd").innerText = "A"
+			}
+			else if(prc >= 60 && prc <70){
+				 document.getElementById("grd").innerText = "B"
+			}
+			else if(prc >= 50 && prc <60){
+				  document.getElementById("grd").innerText = "C"
+			}
+			else{
+					document.getElementById("grd").innerText = "F"
+			}
+		}
+		
+		
+		function Currency(){
+			y = document.getElementById("converter").value;
+			return y;
+		}
+		
+		function Calculate(){
+		y = Currency();
+		
+		x = document.getElementById("value1").value;
+		
+		if(x == ""){
+			document.getElementById("value2").value = "";
+			document.getElementById("currency").innerText = ""
+		}else{
+			switch(y){
+				case "Dollar":
+					document.getElementById("currency").innerText = "PKR"
+					document.getElementById("value2").value = x * 170;
+				break;
+		
+				case "PKR":
+					document.getElementById("currency").innerText = "USD"
+					document.getElementById("value2").value = x / 170;
+				break;
+			}
+		}
+		}
+		</script>
+
+
+</body>
+</html>
